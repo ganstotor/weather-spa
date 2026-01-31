@@ -1,0 +1,96 @@
+.Main {
+  background-color: #d8d8d8;
+  height: 100vh;
+  padding: 24px;
+}
+
+/* input Start  */
+
+.InputWrap {
+  display: flex;
+  height: 50px;
+  border-radius: 12px;
+  margin-bottom: 24px;
+  box-shadow: 3px 3px 12px 1px rgba(0, 0, 0, 0.25);
+}
+
+.Input {
+  width: 80%;
+  padding: 4px 8px;
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
+  background-color: #3a8ac0;
+  font-size: 18px;
+  color: white;
+  border: none;
+  outline: none;
+}
+
+.Button {
+  width: 20%;
+  padding: 4px 8px;
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
+  font-size: 18px;
+  border: none;
+  cursor: pointer;
+}
+
+/* input Finish  */
+/* Card Start  */
+
+.CardList {
+  display: flex;
+}
+
+.Card {
+  width: 200px;
+  height: fit-content;
+  padding: 12px;
+  border-radius: 12px;
+  background-color: #3a8ac0;
+  font-size: 14px;
+  color: white;
+  margin-left: 24px;
+  box-shadow: 3px 3px 12px 1px rgba(0, 0, 0, 0.25);
+}
+
+.Card:first-child {
+  margin-left: 0;
+}
+
+.MainInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.Title {
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.Description {
+  font-size: 16px;
+  margin-top: 4px;
+}
+
+.Temperature {
+  font-size: 40px;
+  font-weight: 500;
+  margin-top: 12px;
+}
+
+.Temperature::after {
+  content: "°C";
+}
+
+.Information {
+  margin-top: 12px;
+}
+
+.Information > div {
+  margin-top: 4px;
+}
+
+/* Card Finish */
