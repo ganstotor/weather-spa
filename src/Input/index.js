@@ -1,9 +1,26 @@
 import "../App.css";
-import React from "react";
+import { useState, useRef } from "react";
 
-export const Input = () => (
-  <div className="InputWrap">
-    <input className="Input" />
-    <button className="Button">+</button>
-  </div>
-);
+export const InputWrap = ({ setCitiesList }) => {
+  const [inputValue, setInputValue] = useState("Kyiv");
+  const inputRef = useRef(null);
+
+  const handleOnClick = () => {
+    setCitiesList((prev) => [...prev, inputValue]);
+    setInputValue("");
+    inputRef.current.focus();
+  };
+
+    const handleOnChange = (event) => {
+    setInputValue(event.target.value);
+  };
+
+  return (
+    <div className="InputWrap">
+      <input className="Input" onChange={handleOnChange} value={inputValue} ref={inputRef}/>
+      <button className="Button" onClick={handleOnClick}>
+        +
+      </button>
+    </div>
+  );
+};
