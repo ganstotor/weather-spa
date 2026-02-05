@@ -1,8 +1,7 @@
 import { useState } from "react";
 
 import "./App.css";
-import { Card } from "./Card";
-
+import { CardList } from "./CardList";
 import { InputWrap } from "./Input";
 
 function App() {
@@ -10,11 +9,7 @@ function App() {
   return (
     <div className="Main">
       <InputWrap setCitiesList={setCitiesList} />
-      <div className="CardList">
-        {
-          citiesList.map(city => <Card city={city} key={city} />)
-        }
-      </div>
+      {citiesList.length > 0 && <CardList citiesList={citiesList} />}
     </div>
   );
 }
