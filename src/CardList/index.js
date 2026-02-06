@@ -1,6 +1,5 @@
 import "../App.css";
 import { Card } from "../Card";
-import { use, useEffect } from "react";
 
 export const CardList = ({ citiesList }) => (
   <div className="CardList">

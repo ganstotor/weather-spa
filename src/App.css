@@ -29,11 +29,15 @@
 .Button {
   width: 20%;
   padding: 4px 8px;
-  border-top-right-radius: 12px;
-  border-bottom-right-radius: 12px;
   font-size: 18px;
   border: none;
   cursor: pointer;
+}
+
+.ClearButton {
+  background-color: rgb(207, 144, 144);
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
 }
 
 /* input Finish  */
