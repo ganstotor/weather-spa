@@ -4,12 +4,12 @@ import { InputWrap } from "./Input";
 import { useCitiesList } from "./hooks/useCitiesList";
 
 function App() {
-  const [citiesList, dispatch] = useCitiesList();
-
+  const [state, dispatch] = useCitiesList();
+  const { inputValue, citiesList, editingCity } = state;
   return (
     <div className="Main">
-      <InputWrap dispatch={dispatch} />
-       <CardList citiesList={citiesList} />
+      <InputWrap dispatch={dispatch} inputValue={inputValue} editingCity={editingCity} />
+       <CardList citiesList={citiesList} dispatch={dispatch} />
     </div>
   );
 }
