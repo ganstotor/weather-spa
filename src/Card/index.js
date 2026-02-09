@@ -8,7 +8,6 @@ export const Card = memo(({ city }) => {
   const data = useWeather(city);
 
   if (!data) return null;
-  console.log("Card data:", data);
   
   const { name, main, weather } = data;
   const { description, icon } = weather[0];

@@ -33,8 +33,6 @@ export const InputWrap = () => {
     dispatch({ type: "CLEAR_LIST" });
   };
 
-  console.log("editingCity", editingCity);
-
   return (
     <div className="InputWrap">
       <input

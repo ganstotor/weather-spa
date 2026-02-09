@@ -47,6 +47,14 @@
   display: flex;
 }
 
+.Select {
+  margin-bottom: 12px;
+  padding: 4px 8px;
+  border-radius: 12px;
+  border: none;
+  font-size: 14px;
+}
+
 .Card {
   width: 200px;
   height: fit-content;
