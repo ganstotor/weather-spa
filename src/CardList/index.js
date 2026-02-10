@@ -3,7 +3,8 @@ import "../App.css";
 import { Card } from "../Card";
 //import { useContext } from "react";
 import React from "react";
-export class CardList extends React.Component {
+import { withGlobalState } from "../hocs/withGlobalState";
+export class CardListNoState extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -18,14 +19,21 @@ export class CardList extends React.Component {
 
   render() {
     const { sortBy } = this.state;
-    const { citiesList } = this.props;
+    const { citiesList } = this.props.state;
     const sortedCitiesList = citiesList.sort();
     if (sortBy === "desc") {
       sortedCitiesList.reverse();
     }
+    if(sortedCitiesList.length === 3) {
+      throw new Error("Too many cities");
+    }
     return (
       <>
-        <select className="Select" value={sortBy} onChange={this.handleOnChange}>
+        <select
+          className="Select"
+          value={sortBy}
+          onChange={this.handleOnChange}
+        >
           <option value="desc">Sort by desc</option>
           <option value="asc">Sort by asc</option>
         </select>
@@ -38,13 +46,5 @@ export class CardList extends React.Component {
     );
   }
 }
-// export const CardList = () => {
-//   const { state: {citiesList} } = useContext(GlobalContext);
-//   return (
-//   <div className="CardList">
-//     {citiesList.map((city) => (
-//       <Card city={city} key={city} />
-//     ))}
-//   </div>
-//   )
-// };
+
+export const CardList = withGlobalState(CardListNoState);

@@ -3,21 +3,21 @@ import "../App.css";
 import { useWeather } from "../hooks/useWeather";
 import { GlobalContext } from "../App";
 
-export const Card = memo(({ city }) => {
-  const {dispatch} = useContext(GlobalContext);
+const CardNoMemo = ({ city }) => {
+  const { dispatch } = useContext(GlobalContext);
   const data = useWeather(city);
 
   if (!data) return null;
-  
+
   const { name, main, weather } = data;
   const { description, icon } = weather[0];
   const { temp, humidity, feels_like } = main;
 
-  const handleOnDelete= () => {
+  const handleOnDelete = () => {
     dispatch({ type: "DELETE_CITY", payload: city });
   };
 
-    const handleOnEdit = () => {
+  const handleOnEdit = () => {
     dispatch({ type: "EDIT_CITY", payload: city });
   };
 
@@ -48,4 +48,6 @@ export const Card = memo(({ city }) => {
       </div>
     </div>
   );
-});
+};
+
+export const Card = memo(CardNoMemo);
