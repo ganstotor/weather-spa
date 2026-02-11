@@ -22,11 +22,13 @@ const CardNoMemo = ({ city }) => {
   const handleOnDelete = (e) => {
     e.stopPropagation();
     dispatch({ type: "DELETE_CITY", payload: city });
+    navigate("/");
   };
 
   const handleOnEdit = (e) => {
     e.stopPropagation();
     dispatch({ type: "EDIT_CITY", payload: city });
+    navigate("/");
   };
 
   return (
