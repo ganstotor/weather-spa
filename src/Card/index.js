@@ -1,13 +1,19 @@
-import { memo, useContext } from "react";
+import { memo, use, useContext, useEffect } from "react";
 import "../App.css";
 import { useWeather } from "../hooks/useWeather";
 import { GlobalContext } from "../App";
 import { useNavigate } from "react-router-dom";
 
-const CardNoMemo = ({ city }) => {
+const CardNoMemo = ({ city, setCityCoord }) => {
   const { dispatch } = useContext(GlobalContext);
   const navigate = useNavigate();
   const data = useWeather(city);
+
+  useEffect(() => {
+    if(data && data.coord.lat && data.coord.lon && setCityCoord) {
+      setCityCoord({lat: data.coord.lat, lon: data.coord.lon})
+    }
+  }, [data, setCityCoord]);
 
   if (!data) return null;
 

@@ -1,11 +1,25 @@
-import { useParams, useLocation, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { Card } from "../Card";
 import "../App.css";
+import { useState } from "react";
+import { useForecast } from "../hooks/useForecast";
+import { DailyCard } from "../DailyCard";
 
 export const SingleCity = () => {
-  
-  const { city } = useParams();    
-  const location = useLocation();  
+  const [cityCoord, setCityCoord] = useState(null);
+  const data = useForecast(cityCoord);
+  console.log("Forecast data:", data);
 
-  return (<Card city={city} />)
+  const { city } = useParams();
+
+  return (
+    <div className="SingleCityWrap">
+      <Card city={city} setCityCoord={setCityCoord} />
+      {data && (
+        <div className="DailyCards">
+          {data.list.map((dailyCard) => <DailyCard dailyCard={dailyCard} key={dailyCard.dt} />)}
+        </div>
+      )}
+    </div>
+  );
 };
