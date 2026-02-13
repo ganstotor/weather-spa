@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Card } from "../Card";
 import "../App.css";
 import { useState } from "react";
@@ -16,6 +16,7 @@ export const SingleCity = () => {
 
   return (
     <div className="SingleCityWrap">
+      <Link to="/" className="BackLink">Back</Link>
       <Card city={city} setCityCoord={setCityCoord} />
       {dailyList && (
         <div className="DailyCards">

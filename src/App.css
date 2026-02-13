@@ -161,4 +161,16 @@
   margin-top: 4px;
   text-align: center;
 }
+
+.BackLink {
+  margin: 24px;
+  padding: 4px 8px;
+  border-radius: 12px;
+  color: rgb(104, 121, 199);
+  text-decoration: none;
+}
+
+.BackLink:hover {
+  text-decoration: underline;
+}
 /* SingleCity Finish  */
