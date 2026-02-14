@@ -10,20 +10,10 @@ const CardNoMemo = ({ city, setCityCoord }) => {
   const data = useWeather(city);
 
   useEffect(() => {
-    if(data && data.coord.lat && data.coord.lon && setCityCoord) {
-      setCityCoord({lat: data.coord.lat, lon: data.coord.lon})
+    if (data && data.coord.lat && data.coord.lon && setCityCoord) {
+      setCityCoord({ lat: data.coord.lat, lon: data.coord.lon });
     }
   }, [data, setCityCoord]);
-
-  if (!data) return null;
-
-  const { name, main, weather } = data;
-  const { description, icon } = weather[0];
-  const { temp, humidity, feels_like } = main;
-
-  const openCity = () => {
-    navigate(`/city/${city.toLowerCase()}`);
-  };
 
   const handleOnDelete = (e) => {
     e.stopPropagation();
@@ -35,6 +25,36 @@ const CardNoMemo = ({ city, setCityCoord }) => {
     e.stopPropagation();
     dispatch({ type: "EDIT_CITY", payload: city });
     navigate("/");
+  };
+
+  if (data === null) {
+    return (
+      <div className="Card">
+        <div className="ActionButtonWrap">
+          <button className="ActionButton" onClick={handleOnEdit}>
+            ✏
+          </button>
+          <button className="ActionButton" onClick={handleOnDelete}>
+            X
+          </button>
+        </div>
+
+        <div className="MainInfo">
+          <div className="Title">{city}</div>
+          <div className="Description">Not found</div>
+        </div>
+      </div>
+    );
+  }
+
+  if (!data) return null;
+
+  const { name, main, weather } = data;
+  const { description, icon } = weather[0];
+  const { temp, humidity, feels_like } = main;
+
+  const openCity = () => {
+    navigate(`/city/${city.toLowerCase()}`);
   };
 
   return (
@@ -61,9 +81,7 @@ const CardNoMemo = ({ city, setCityCoord }) => {
 
       <div className="Information">
         <div className="InfoItem">Humidity: {humidity}%</div>
-        <div className="InfoItem">
-          Feels like: {feels_like.toFixed(1)}°C
-        </div>
+        <div className="InfoItem">Feels like: {feels_like.toFixed(1)}°C</div>
       </div>
     </div>
   );

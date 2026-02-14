@@ -24,9 +24,6 @@ export class CardListNoState extends React.Component {
     if (sortBy === "desc") {
       sortedCitiesList.reverse();
     }
-    if(sortedCitiesList.length === 3) {
-      throw new Error("Too many cities");
-    }
     return (
       <>
         <select
